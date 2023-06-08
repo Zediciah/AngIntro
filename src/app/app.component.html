@@ -1,22 +1,40 @@
 <div class="form-area">
-    <h1>Post Form</h1>
+    <h3>User Details</h3>
+
+    <input type="text" placeholder="Name" [(ngModel)]='name'>
     <br><br>
-    <input type="text" placeholder="Post Title" [(ngModel)] = "postTitle">
+
+    <input type="email" placeholder="E-Mail" [(ngModel)]='email'>
     <br><br>
-    <textarea cols="30" rows="10" placeholder="Post Details" [(ngModel)] = "postDetails" ></textarea>
+
+    <textarea cols="30" rows="10" placeholder="Address" [(ngModel)]='address'></textarea>
     <br><br>
-    <input type="text" placeholder="Post Image" [(ngModel)] = "imageURL">
-    <br><br>
-    <input type="text" placeholder="Post URL" [(ngModel)] = "postURL">
-    <br><br>
-    <input type="checkbox" [(ngModel)] = "addBackground"> Add Background
+
+    <button (click) = 'onClick()'>Save Data</button>
 </div>
 
-<div class = "preview-area">
-    <img [src] = "imageURL" alt="">
-    <h1> <span [class.add-background] = "addBackground"> {{ postTitle }} </span></h1>
-    <p> {{ postDetails }}</p>
-    <a [href]="postURL" target="_blank" [style.display] = "postURL ? 'block' : 'none'">More Details</a>
 
-
+<div *ngIf= "userArray.length > 0; else noData"> 
+    <div class="table-area">
+        <table width = '500px'>
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Action</th>
+            </thead>
+    
+            <tr *ngFor = "let user of userArray; let index = index" >
+                <td>{{ index +1 }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.address }}</td>
+                <td (click)="onDelete(index)"><button>Delete</button></td>
+            </tr>
+        </table>
+    </div>
 </div>
+<ng-template #noData >
+    <h4>No data to show</h4>
+</ng-template>

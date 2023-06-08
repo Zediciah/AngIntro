@@ -1,5 +1,5 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { PostComponent } from './post/post.component';
+import { Component } from '@angular/core';
+//import { PostComponent } from './post/post.component';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,27 @@ import { PostComponent } from './post/post.component';
 })
 
 export class AppComponent {
+  name: string;
+  email: string;
+  address: string;
 
-  postTitle: string = '';
-  postDetails: string = '';
-  imageURL: string = '';
-  postURL: string = '';
-  addBackground: boolean = false;
+  userArray: Array<any> = [];
+
+  constructor(){
+
+  }
+
+  onClick(){
+    this.userArray.push({
+      "name" : this.name,
+      "email" : this.email,
+      "address" : this.address
+    });
+
+    console.log(this.userArray);
+  }
+
+  onDelete(index:any){
+    this.userArray.splice(index, 1);
+  }
 }
