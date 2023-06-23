@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { PostlistComponent } from './postlist/postlist.component';
+import { AppendPipe } from './Pipes/append.pipe';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { PostlistComponent } from './postlist/postlist.component';
     AppComponent,
     NavbarComponent,
     PostComponent,
-    PostlistComponent
+    PostlistComponent,
+    AppendPipe
   ],
   imports: [
     BrowserModule,
